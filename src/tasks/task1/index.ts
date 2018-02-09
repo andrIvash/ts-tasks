@@ -1,13 +1,14 @@
 function task1() {
+console.log('task 1');  
 
-enum Category {'JavaScript', 'TypeScript'};
+enum Category {'JavaScript', 'OOP', 'Testing', 'CSS'};
 
   function getAllBooks(): Array<any> {
     let books: Array<any> = [
-      { title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true},
-      { title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false },
-      { title: 'CSS Secrets', author: 'Lea Verou', available: true },
-      { title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', available: true }
+      { title: 'Refactoring JavaScript', author: 'Evan Burchard', category: 0, available: true},
+      { title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', category: 2, available: false },
+      { title: 'CSS Secrets', author: 'Lea Verou', category: 3, available: true },
+      { title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', category: 1, available: true }
     ];
     return books;
   }
@@ -33,7 +34,7 @@ enum Category {'JavaScript', 'TypeScript'};
      
     for (let currentBook of allBooks) {
       if (currentBook.category === category) {
-        titles.push(currentBook.title);
+        titles.push(currentBook.title); 
       }
     }
     return titles; 
@@ -47,7 +48,6 @@ enum Category {'JavaScript', 'TypeScript'};
 
   logBookTitles(getBookTitlesByCategory(Category.JavaScript));
 
-
- }
+}
 
 export default task1;
