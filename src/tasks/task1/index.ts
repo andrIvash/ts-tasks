@@ -1,14 +1,14 @@
-function task1() {
+export function task1() {
 console.log('task 1');  
 
 enum Category {'JavaScript', 'OOP', 'Testing', 'CSS'};
 
   function getAllBooks(): Array<any> {
     let books: Array<any> = [
-      { title: 'Refactoring JavaScript', author: 'Evan Burchard', category: 0, available: true},
-      { title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', category: 2, available: false },
-      { title: 'CSS Secrets', author: 'Lea Verou', category: 3, available: true },
-      { title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', category: 1, available: true }
+      { id: 0, title: 'Refactoring JavaScript', author: 'Evan Burchard', category: Category.JavaScript, available: true},
+      { id: 1, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', category: Category.Testing, available: false },
+      { id: 2, title: 'CSS Secrets', author: 'Lea Verou', category: Category.CSS, available: true },
+      { id: 3, title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', category: Category.OOP, available: true }
     ];
     return books;
   }
@@ -48,6 +48,30 @@ enum Category {'JavaScript', 'OOP', 'Testing', 'CSS'};
 
   logBookTitles(getBookTitlesByCategory(Category.JavaScript));
 
-}
+  // task 3
+  //--------------------------------------------------------------
+  function getBookById(id: number): object {
+    const allBooks:Array<any> = getAllBooks();
+    return allBooks.find(book => book.id === id)
+  }
 
-export default task1;
+  const jsBooks: Array<string> = getBookTitlesByCategory(Category.OOP);
+  jsBooks.forEach(title => console.log(title));
+  console.log(getBookById(3));
+
+  //task4
+  function createCustomerID(name: string, id: number): string {
+    return `${name} ${id}`
+  }
+
+  let myID = createCustomerID('Anna', 10);
+  console.log(myID);
+
+  let IdGenerator: (name: string, id: number) => string;
+  IdGenerator = (name: string, id: number): string => `${name} ${id}`;
+  IdGenerator = createCustomerID;
+  myID = IdGenerator('Anna', 20);
+  console.log(myID)
+
+
+};
