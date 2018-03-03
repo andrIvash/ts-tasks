@@ -1,7 +1,8 @@
 import {Category} from './sets';
+import {Book} from './interfaces';
 
-export function getAllBooks(): Array<any> {
-  let books: Array<any> = [
+export function getAllBooks(): Array<Book> {
+  let books: Array<Book> = [
     { id: 0, title: 'Refactoring JavaScript', author: 'Evan Burchard', category: Category.JavaScript, available: true},
     { id: 1, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', category: Category.JavaScript, available: false },
     { id: 2, title: 'CSS Secrets', author: 'Lea Verou', category: Category.CSS, available: true },
@@ -26,7 +27,7 @@ export function getBookTitlesByCategory(category: Category): Array<string> {
   return titles; 
 }
 
-export function getBookById(id: number): object {
-  const allBooks:Array<any> = getAllBooks();
+export function getBookById(id: number): Book|undefined {
+  const allBooks:Array<Book> = getAllBooks();
   return allBooks.find(book => book.id === id)
 }
