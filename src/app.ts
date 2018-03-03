@@ -9,6 +9,8 @@ import task8 from './tasks/task8';
 import task9 from './tasks/task9';
 import task10 from './tasks/task10';
 import task11 from './tasks/task11';
+import task12 from './tasks/task12';
+import task13 from './tasks/task13';
 
 task1();
 task2();
@@ -21,6 +23,8 @@ task8();
 task9();
 task10();
 task11();
+task12();
+task13();
 
 showHello('greeting', 'TypeScript!');
 
