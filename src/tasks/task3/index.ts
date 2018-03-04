@@ -12,7 +12,7 @@ import {
   getBookTitlesByCategory
 } from '../../common/methods';
 
-import {Category} from '../../common/sets';
+import {Category} from '../../common/enums';
 
 export default function () {  
   console.log('--------------------- task 3');

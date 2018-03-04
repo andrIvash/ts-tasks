@@ -1,6 +1,7 @@
-import { Librarian } from './interfaces';
+import { Librarian, ShelfItem } from './interfaces';
+import { writable } from './decorators';
 
-export class UniversityLibrarian implements Librarian {
+class UniversityLibrarian implements Librarian {
   name: string;
   email: string;
   department: string;
@@ -14,9 +15,19 @@ export class UniversityLibrarian implements Librarian {
   assistCustomer(custName: string): void {
     console.log(`${this.name} is assisting ${custName}`);
   }
+
+  @writable(true)
+  assistFaculty(): void {
+    console.log('Assisting faculty');
+  }
+
+  @writable(false)
+  teachCommunity(): void {
+    console.log('Teaching community');
+  }
 }
 
-export abstract class ReferenceItem {
+abstract class ReferenceItem {
     
   private _publisher: string;
   static department = 'General';
@@ -41,7 +52,7 @@ export abstract class ReferenceItem {
   }
 }
 
-export class Encyclopedia extends ReferenceItem {
+class Encyclopedia extends ReferenceItem {
   
   constructor(title: string, year: number, public edition: string) {
     super(title, year);
@@ -55,3 +66,31 @@ export class Encyclopedia extends ReferenceItem {
     console.log(`${this.title} was published in ${this.year}, department: ${ReferenceItem.department}, edition: ${this.edition}`);
   }
 }
+
+class Shelf<T extends ShelfItem> {
+  private _items: Array<T>;
+
+  constructor(items: Array<T>) {
+    this._items = items;  
+  }
+  
+  add(item: T): void {
+    this._items.push(item);
+  }
+  
+  getFirst(): T {
+    return this._items[0];
+  }
+  
+  find(title: string): T {
+    return this._items.find((item: T) => item.title == title);
+  }
+
+  printTitles() {
+    this._items.forEach((item: T) => {
+      console.log(item.title);
+    });
+  }
+}
+
+export {UniversityLibrarian, ReferenceItem, Encyclopedia, Shelf};

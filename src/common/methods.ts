@@ -1,4 +1,4 @@
-import {Category} from './sets';
+import {Category} from './enums';
 import {Book} from './interfaces';
 
 export function getAllBooks(): Array<Book> {
@@ -30,4 +30,17 @@ export function getBookTitlesByCategory(category: Category): Array<string> {
 export function getBookById(id: number): Book|undefined {
   const allBooks:Array<Book> = getAllBooks();
   return allBooks.find(book => book.id === id)
+}
+
+export function getBooksByCategoryPromise(category: Category): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() =>{
+        const titles = getBookTitlesByCategory(category);
+        if (titles) {
+          resolve(titles);
+        } else {
+          reject(new Error('No books found.'))
+        }
+    }, 2000);
+  })
 }

@@ -9,12 +9,12 @@ markDamaged.
 переменной. Вызовите функцию.
 */
 
-import { DamageLogger } from '../../common/interfaces';
+import { Logger } from '../../common/interfaces';
 
 export default function () {  
   console.log('--------------------- task 8');
 
-  const logDamage: DamageLogger = (reason: string): void => {
+  const logDamage: Logger = (reason: string): void => {
       console.log(`Damaged: ${reason}`);
   }
 

@@ -27,7 +27,7 @@ import {
   getAllBooks,
   getBookById
 } from '../../common/methods';
-import {Category} from '../../common/sets';
+import {Category} from '../../common/enums';
 
 
 export default function () {  

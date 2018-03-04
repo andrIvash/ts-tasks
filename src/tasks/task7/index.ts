@@ -37,7 +37,7 @@ copies: 3
    строку ‘missing back cover’ 
 */
 
-import {Category} from '../../common/sets';
+import {Category} from '../../common/enums';
 import {Book} from '../../common/interfaces';
 
 export default function () {  
